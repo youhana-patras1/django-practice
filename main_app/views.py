@@ -1,4 +1,7 @@
 from django.shortcuts import render
-
-def student_form(request):
-    return render(request, 'form.html')
+from .models import Student
+def student_list(request):
+    # Database se saare students mangwao
+    students = Student.objects.all()
+    # Inko HTML page (template) par bhej do
+    return render(request, 'student.html', {'students': students})
